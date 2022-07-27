@@ -11,6 +11,33 @@ import Header from "./components/Header.vue";
 export default defineComponent({
   name: "App",
   components: { Header },
+  data() {
+    return {
+      tasks: [{}],
+    };
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: "Doctors Appointment",
+        day: "March 1st at 2.30PM",
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: "Meeting at School",
+        day: "March 3rd at 1.30PM",
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: "Sports at Campus",
+        day: "March 4th at 11.00AM",
+        reminder: false,
+      },
+    ];
+  },
 });
 </script>
 
