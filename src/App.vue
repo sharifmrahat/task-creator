@@ -36,7 +36,9 @@ export default defineComponent({
       }
     },
     toggleReminder(id: Number) {
-      console.log(id);
+      this.tasks = this.tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      );
     },
   },
   created() {
