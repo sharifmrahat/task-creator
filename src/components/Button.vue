@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleClick()" :style="{ background: color }" class="btn">
+  <button @click="handleClick" :style="{ background: color }" class="btn">
     {{ text }}
   </button>
 </template>
@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     handleClick() {
-      console.log("Clicked");
+      this.$emit("toggle-add-task");
     },
   },
 };

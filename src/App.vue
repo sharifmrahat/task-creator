@@ -1,7 +1,13 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker" />
-    <AddTask @add-task="addTask" />
+    <Header
+      @toggle-add-task="toggleAddTask"
+      title="Task Tracker"
+      :showAddTask="showAddTask"
+    />
+    <div v-if="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
     <Tasks
       @toggle-reminder="toggleReminder"
       @delete-task="deleteTask"
@@ -29,11 +35,12 @@ export default defineComponent({
           reminder: false,
         },
       ],
+      showAddTask: false,
     };
   },
   methods: {
-    addTask(newTask: Object) {
-      console.log(newTask);
+    addTask(newTask: any) {
+      this.tasks = [...this.tasks, newTask];
     },
     deleteTask(id: Number) {
       if (confirm(`Are you sure to delete ${id}?`)) {
@@ -44,6 +51,9 @@ export default defineComponent({
       this.tasks = this.tasks.map((task) =>
         task.id === id ? { ...task, reminder: !task.reminder } : task
       );
+    },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     },
   },
   created() {
