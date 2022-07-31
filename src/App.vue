@@ -15,13 +15,20 @@ export default defineComponent({
   components: { Header, Tasks },
   data() {
     return {
-      tasks: [],
+      tasks: [
+        {
+          id: 0,
+          text: "",
+          day: "",
+          reminder: false,
+        },
+      ],
     };
   },
   methods: {
-    deleteTask(id: any) {
+    deleteTask(id: number) {
       if (confirm(`Are you sure to delete ${id}?`)) {
-        this.tasks = this.tasks.filter((task) => task.id != id);
+        this.tasks = this.tasks.filter((task) => task?.id != id);
       }
     },
   },
