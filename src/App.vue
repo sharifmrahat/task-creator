@@ -55,28 +55,19 @@ export default defineComponent({
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
+    async fetchTasks() {
+      const res = await fetch("api/tasks");
+      const data = res.json();
+      return data;
+    },
+    async fetchTask(id: Number) {
+      const res = await fetch(`api/tasks/${id}`);
+      const data = res.json();
+      return data;
+    },
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doctors Appointment",
-        day: "March 1st at 2.30PM",
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: "Meeting at School",
-        day: "March 3rd at 1.30PM",
-        reminder: true,
-      },
-      {
-        id: 3,
-        text: "Sports at Campus",
-        day: "March 4th at 11.00AM",
-        reminder: false,
-      },
-    ];
+  async created() {
+    this.tasks = await this.fetchTasks();
   },
 });
 </script>
