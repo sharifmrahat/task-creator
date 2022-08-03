@@ -7,12 +7,6 @@
       "reminder": true
     },
     {
-      "id": 2,
-      "text": "Meeting with boss",
-      "day": "March 6th at 1:30pm",
-      "reminder": true
-    },
-    {
       "id": 3,
       "text": "Food shopping",
       "day": "March 7th at 2:00pm",
@@ -29,18 +23,6 @@
       "day": "Aug 20 at 10:30 AM",
       "reminder": true,
       "id": 5
-    },
-    {
-      "text": "Dentist Appointment",
-      "day": "Aug 20 at 10:30 AM",
-      "reminder": true,
-      "id": 6
-    },
-    {
-      "text": "Dentist Appointment",
-      "day": "Aug 20 at 10:30 AM",
-      "reminder": true,
-      "id": 7
     }
   ]
 }

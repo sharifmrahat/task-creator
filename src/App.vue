@@ -55,11 +55,11 @@ export default defineComponent({
       if (confirm(`Are you sure to delete ${id}?`)) {
         const res = await fetch(`api/tasks/${id}`, {
           method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
         });
-        this.tasks = this.tasks.filter((task) => task?.id != id);
+
+        res.status === 200
+          ? (this.tasks = this.tasks.filter((task) => task?.id != id))
+          : alert("Error Deleting");
       }
     },
     toggleReminder(id: Number) {
