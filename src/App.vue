@@ -39,11 +39,26 @@ export default defineComponent({
     };
   },
   methods: {
-    addTask(newTask: any) {
-      this.tasks = [...this.tasks, newTask];
+    async addTask(newTask: any) {
+      const res = await fetch("api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      });
+      const data = await res.json();
+      this.tasks = [...this.tasks, data];
     },
-    deleteTask(id: Number) {
+
+    async deleteTask(id: Number) {
       if (confirm(`Are you sure to delete ${id}?`)) {
+        const res = await fetch(`api/tasks/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         this.tasks = this.tasks.filter((task) => task?.id != id);
       }
     },
