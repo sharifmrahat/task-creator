@@ -28,13 +28,16 @@ export default {
     async addTask(task) {
       // -----------For JSON-SERVER----------\\
 
-      const res = await fetch("api/tasks", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(task),
-      });
+      const res = await fetch(
+        "https://my-json-server.typicode.com/sharifmrahat/task-creator/tasks",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(task),
+        }
+      );
 
       const data = await res.json();
 
@@ -46,9 +49,12 @@ export default {
     },
     async deleteTask(id) {
       if (confirm("Are you sure?")) {
-        const res = await fetch(`api/tasks/${id}`, {
-          method: "DELETE",
-        });
+        const res = await fetch(
+          `https://my-json-server.typicode.com/sharifmrahat/task-creator/tasks/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
 
         res.status === 200
           ? (this.tasks = this.tasks.filter((task) => task.id !== id))
@@ -59,13 +65,16 @@ export default {
       const taskToToggle = await this.fetchTask(id);
       const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-      const res = await fetch(`api/tasks/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(updTask),
-      });
+      const res = await fetch(
+        `https://my-json-server.typicode.com/sharifmrahat/task-creator/tasks/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(updTask),
+        }
+      );
 
       const data = await res.json();
 
@@ -74,14 +83,18 @@ export default {
       );
     },
     async fetchTasks() {
-      const res = await fetch("api/tasks");
+      const res = await fetch(
+        "https://my-json-server.typicode.com/sharifmrahat/task-creator/tasks"
+      );
 
       const data = await res.json();
 
       return data;
     },
     async fetchTask(id) {
-      const res = await fetch(`api/tasks/${id}`);
+      const res = await fetch(
+        `https://my-json-server.typicode.com/sharifmrahat/task-creator/tasks/${id}`
+      );
 
       const data = await res.json();
 
