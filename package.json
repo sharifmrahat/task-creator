@@ -1,5 +1,6 @@
 {
   "name": "task-creator",
+  "homepage": "https://sharifmrahat.github.io/task-creator",
   "version": "0.1.0",
   "private": true,
   "scripts": {
