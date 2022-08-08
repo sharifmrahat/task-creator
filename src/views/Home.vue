@@ -26,6 +26,8 @@ export default {
   },
   methods: {
     async addTask(task) {
+      // -----------For JSON-SERVER----------\\
+
       const res = await fetch("api/tasks", {
         method: "POST",
         headers: {
@@ -36,7 +38,11 @@ export default {
 
       const data = await res.json();
 
+      // -----------For LocalStorage----------\\
+
       this.tasks = [...this.tasks, data];
+      console.log(this.tasks);
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
     },
     async deleteTask(id) {
       if (confirm("Are you sure?")) {
