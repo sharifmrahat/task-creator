@@ -7,7 +7,7 @@ module.exports = {
   devServer: {
     proxy: {
       "^/api": {
-        target: "http://localhost:5000",
+        target: "https://my-json-server.typicode.com/sharifmrahat/task-creator",
         changeOrigin: true,
         logLevel: "debug",
         pathRewrite: { "^/api": "/" },
